@@ -50,19 +50,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     self.uuid = uuid
     self.token = token
+    
     let ibeacon = iBeaconLocation(uuid: self.uuid!, token: self.token!, onUpdate : {
       update in
       self.message = update
       self.tableView.reloadData()
-    }, presentAlert : {
-      alertController in
-      self.presentViewController(alertController, animated: true, completion: nil)
+      }, presentAlert : {
+        alertController in
+        self.presentViewController(alertController, animated: true, completion: nil)
     })
     ibeacon.requestAlwaysAuthorization()
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    
     
     let bounds = self.view.bounds;
     //let buttonFrame = CGRect(x: bounds.width, y: bounds.height, width: 100, height: 50)

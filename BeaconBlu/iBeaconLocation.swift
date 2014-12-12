@@ -10,9 +10,9 @@ import Foundation
 import CoreLocation
 
 class iBeaconLocation: NSObject, CLLocationManagerDelegate {
-  let iBeaconUUID : NSString = "cf593b78-da79-4077-aba3-940085df45ca"
+  let iBeaconUUID : NSString = "CF593B78-DA79-4077-ABA3-940085DF45CA"
   let meshbluToUuid : String = "*"
-  var locationManager: CLLocationManager = CLLocationManager()
+  var locationManager: CLLocationManager
   var beaconRegion: CLBeaconRegion?
   var meshblu: Meshblu?
   let _onUpdate : (String) -> ()?
@@ -21,29 +21,36 @@ class iBeaconLocation: NSObject, CLLocationManagerDelegate {
   init(uuid: String, token: String, onUpdate: (String) -> (), presentAlert: (UIAlertController) -> ()){
     self._onUpdate = onUpdate
     self._presentAlert = presentAlert
+    self.locationManager = CLLocationManager()
     super.init()
     self.locationManager.delegate = self
-    self.locationManager.requestWhenInUseAuthorization()
     self.locationManager.requestAlwaysAuthorization()
+    self.locationManager.pausesLocationUpdatesAutomatically = false
+    
+    self.meshblu = Meshblu(uuid: uuid, token: token)
+  }
+  
+  func startLocationManager(){
     let proximityUuid = NSUUID(UUIDString: self.iBeaconUUID)
     self.beaconRegion = CLBeaconRegion(proximityUUID: proximityUuid, major: 1, minor: 1, identifier: "Holy")
     self.beaconRegion?.notifyEntryStateOnDisplay = true
-    self.locationManager.pausesLocationUpdatesAutomatically = false
     self.locationManager.startMonitoringForRegion(self.beaconRegion)
     self.locationManager.startRangingBeaconsInRegion(self.beaconRegion)
-    self.meshblu = Meshblu(uuid: uuid, token: token)
+    self.locationManager.startUpdatingLocation()
   }
   
   func updateStatus(status: CLAuthorizationStatus){
     var title : String?
     
-    switch CLLocationManager.authorizationStatus() {
+    switch status {
     case CLAuthorizationStatus.Authorized:
       title = "Location Authorized"
+      self.startLocationManager()
     case CLAuthorizationStatus.AuthorizedWhenInUse:
       title = "Location Authorized When In Use"
     case CLAuthorizationStatus.NotDetermined:
       title = "Location Not Determined"
+      self.startLocationManager()
     case CLAuthorizationStatus.Denied:
       title = "Location Denied"
     case CLAuthorizationStatus.Restricted:
@@ -57,11 +64,6 @@ class iBeaconLocation: NSObject, CLLocationManagerDelegate {
     self.updateStatus(status)
     
     switch status {
-    case .Authorized:
-      self.locationManager.startUpdatingLocation()
-    case .NotDetermined:
-      self.locationManager.startUpdatingLocation()
-      self.locationManager.requestAlwaysAuthorization()
     case .AuthorizedWhenInUse, .Restricted, .Denied:
       let alertController = UIAlertController(
         title: "Background Location Access Disabled",
@@ -78,6 +80,8 @@ class iBeaconLocation: NSObject, CLLocationManagerDelegate {
       }
       alertController.addAction(openAction)
       self._presentAlert(alertController)
+    default:
+      return
     }
   
   }
