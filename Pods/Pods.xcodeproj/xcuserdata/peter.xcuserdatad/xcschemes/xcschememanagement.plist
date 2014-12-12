@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-BeaconBlu-KCSIBeacon.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-BeaconBlu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -24,7 +29,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-BeaconBluTests-KCSIBeacon.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-BeaconBluTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-KCSIBeacon.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,32 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1E1224619BD19A7657149212</key>
+		<key>0034862FF5D45F08B809C05D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3510E5EDA7FD57449199941C</key>
+		<key>0F838296549D39E48869DE7F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>39547258ECC0A072C3557FEE</key>
+		<key>1D535FDC6ADFE0B61F65318F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A9200E25B168BAE1CF19A9D3</key>
+		<key>25A60F2E1B0152E75E02DC50</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CBCBE8CEFD1FC42F3B09DE7B</key>
+		<key>765CE273339A75FD42C78676</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EE6886AD43439FA7F9A83B15</key>
+		<key>94A448B2386F60425B735E55</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9536E3B45704D12E84C4B452</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A39D378858CB18BCF38422F4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B4BCA9CA0BF1C151A9EB3B3B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

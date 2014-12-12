@@ -45,7 +45,6 @@
 		D0A8E6C61A2E7B0700BE8EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0A8E6C71A2E7B0700BE8EF6 /* BeaconBluTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconBluTests.swift; sourceTree = "<group>"; };
 		D0A8E6D31A2E7CE100BE8EF6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		D0A8E6D61A2E82A800BE8EF6 /* BeaconBlu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BeaconBlu-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +102,6 @@
 				D06FB1691A38FAD300D78D32 /* Bridging-Header.h */,
 				D06FB16F1A38FEFC00D78D32 /* iBeaconLocation.swift */,
 				D06FB16D1A38FB6900D78D32 /* Meshblu.swift */,
-				D0A8E6D61A2E82A800BE8EF6 /* BeaconBlu-Bridging-Header.h */,
 				D0A8E6D31A2E7CE100BE8EF6 /* MainViewController.swift */,
 				D0A8E6B51A2E7B0700BE8EF6 /* Main.storyboard */,
 				D0A8E6B81A2E7B0700BE8EF6 /* Images.xcassets */,

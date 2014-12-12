@@ -54,6 +54,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       update in
       self.message = update
       self.tableView.reloadData()
+    }, presentAlert : {
+      alertController in
+      self.presentViewController(alertController, animated: true, completion: nil)
     })
     ibeacon.requestAlwaysAuthorization()
   }

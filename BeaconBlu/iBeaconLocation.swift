@@ -16,60 +16,93 @@ class iBeaconLocation: NSObject, CLLocationManagerDelegate {
   var beaconRegion: CLBeaconRegion?
   var meshblu: Meshblu?
   let _onUpdate : (String) -> ()?
+  let _presentAlert: (UIAlertController) -> ()?
   
-  init(uuid: String, token: String, onUpdate: (String) -> ()){
+  init(uuid: String, token: String, onUpdate: (String) -> (), presentAlert: (UIAlertController) -> ()){
     self._onUpdate = onUpdate
+    self._presentAlert = presentAlert
     super.init()
     self.locationManager.delegate = self
     self.locationManager.requestWhenInUseAuthorization()
     self.locationManager.requestAlwaysAuthorization()
-    
     let proximityUuid = NSUUID(UUIDString: self.iBeaconUUID)
-    self.beaconRegion = CLBeaconRegion(proximityUUID: proximityUuid, major: 1, minor: 1, identifier: "Conference Room")
-    
+    self.beaconRegion = CLBeaconRegion(proximityUUID: proximityUuid, major: 1, minor: 1, identifier: "Holy")
+    self.beaconRegion?.notifyEntryStateOnDisplay = true
+    self.locationManager.pausesLocationUpdatesAutomatically = false
     self.locationManager.startMonitoringForRegion(self.beaconRegion)
     self.locationManager.startRangingBeaconsInRegion(self.beaconRegion)
-    
     self.meshblu = Meshblu(uuid: uuid, token: token)
+  }
+  
+  func updateStatus(status: CLAuthorizationStatus){
+    var title : String?
+    
+    switch CLLocationManager.authorizationStatus() {
+    case CLAuthorizationStatus.Authorized:
+      title = "Location Authorized"
+    case CLAuthorizationStatus.AuthorizedWhenInUse:
+      title = "Location Authorized When In Use"
+    case CLAuthorizationStatus.NotDetermined:
+      title = "Location Not Determined"
+    case CLAuthorizationStatus.Denied:
+      title = "Location Denied"
+    case CLAuthorizationStatus.Restricted:
+      title = "Location Restricted"
+    }
+    self._onUpdate(title!)
   }
   
   func requestAlwaysAuthorization(){
     let status : CLAuthorizationStatus = CLLocationManager.authorizationStatus()
-    var title : String?
+    self.updateStatus(status)
     
-    if status != CLAuthorizationStatus.NotDetermined {
+    switch status {
+    case .Authorized:
+      self.locationManager.startUpdatingLocation()
+    case .NotDetermined:
+      self.locationManager.startUpdatingLocation()
       self.locationManager.requestAlwaysAuthorization()
-      return
+    case .AuthorizedWhenInUse, .Restricted, .Denied:
+      let alertController = UIAlertController(
+        title: "Background Location Access Disabled",
+        message: "In order to be notified about adorable kittens near you, please open this app's settings and set location access to 'Always'.",
+        preferredStyle: .Alert)
+      
+      let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+      alertController.addAction(cancelAction)
+      
+      let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
+        if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+          UIApplication.sharedApplication().openURL(url)
+        }
+      }
+      alertController.addAction(openAction)
+      self._presentAlert(alertController)
     }
-    
-    let message : String = "To use background location you must turn on 'Always' in the Location Services Settings"
-    
-    if status == CLAuthorizationStatus.AuthorizedWhenInUse {
-      title = "Location services are off"
-    }
-    
-    if status == CLAuthorizationStatus.Denied {
-      title = "Background location is not enabled"
-    }
-    
-    let alert : UIAlertView = UIAlertView(title: title, message: message, delegate: self, cancelButtonTitle: "Cancel")
-    
-    alert.show()
   
+  }
+  
+  func locationManager(manager: CLLocationManager!, didStartMonitoringForRegion region: CLRegion!) {
+    self._onUpdate("Scanning...")
+  }
+  
+  func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+    self._onUpdate("Error :(")
   }
   
   func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
     if locations.count == 0 {
+      self._onUpdate("No location updates")
       return
     }
     let lastObject: AnyObject = locations[locations.count - 1]
-    NSLog("Updated Location \(lastObject)")
     self._onUpdate("Updated Location \(lastObject)")
   }
   
   func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
     
     if beacons.count == 0 {
+      self._onUpdate("No beacons found")
       return
     }
     let lastBeacon: CLBeacon = beacons[beacons.count - 1] as CLBeacon;
@@ -88,7 +121,6 @@ class iBeaconLocation: NSObject, CLLocationManagerDelegate {
       message = "Location Undetermined"
     }
     
-    NSLog(message)
     self._onUpdate(message)
     
     let meshbluMessage : AnyObject = [
@@ -124,7 +156,17 @@ class iBeaconLocation: NSObject, CLLocationManagerDelegate {
   
   func locationManager(manager: CLLocationManager!, didDetermineState state: CLRegionState, forRegion region: CLRegion!) {
     self._onUpdate("Did Exit Region")
-    self.locationManager.stopRangingBeaconsInRegion(self.beaconRegion)
+    manager.stopRangingBeaconsInRegion(self.beaconRegion)
+    manager.stopUpdatingLocation()
+  }
+  
+  func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    self._onUpdate("didChangeAuthorizationStatus")
+    self.updateStatus(status)
+    if status == .Authorized || status == .AuthorizedWhenInUse {
+      self.locationManager.startUpdatingLocation()
+      self._onUpdate("Authorized Location Updates")
+    }
   }
   
 }
