@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		207167746C95F7D46BB3FD84 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D08CF05FFFF98E1923938DF1 /* libPods.a */; };
+		D04596721A3B600E0027F19C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04596711A3B600E0027F19C /* CoreLocation.framework */; };
 		D06FB16E1A38FB6900D78D32 /* Meshblu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06FB16D1A38FB6900D78D32 /* Meshblu.swift */; };
-		D06FB1701A38FEFC00D78D32 /* iBeaconLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06FB16F1A38FEFC00D78D32 /* iBeaconLocation.swift */; };
 		D0A8E6B21A2E7B0700BE8EF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A8E6B11A2E7B0700BE8EF6 /* AppDelegate.swift */; };
 		D0A8E6B71A2E7B0700BE8EF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A8E6B51A2E7B0700BE8EF6 /* Main.storyboard */; };
 		D0A8E6B91A2E7B0700BE8EF6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A8E6B81A2E7B0700BE8EF6 /* Images.xcassets */; };
@@ -31,9 +31,9 @@
 /* Begin PBXFileReference section */
 		17A8A6E0DF472B8EB9FD92D1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		500BFFA1300ED8599C21E2B3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D04596711A3B600E0027F19C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D06FB1691A38FAD300D78D32 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		D06FB16D1A38FB6900D78D32 /* Meshblu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meshblu.swift; sourceTree = "<group>"; };
-		D06FB16F1A38FEFC00D78D32 /* iBeaconLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iBeaconLocation.swift; sourceTree = "<group>"; };
 		D08CF05FFFF98E1923938DF1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A8E6AC1A2E7B0700BE8EF6 /* BeaconBlu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeaconBlu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A8E6B01A2E7B0700BE8EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D04596721A3B600E0027F19C /* CoreLocation.framework in Frameworks */,
 				207167746C95F7D46BB3FD84 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,7 +101,6 @@
 			children = (
 				D0A8E6B11A2E7B0700BE8EF6 /* AppDelegate.swift */,
 				D06FB1691A38FAD300D78D32 /* Bridging-Header.h */,
-				D06FB16F1A38FEFC00D78D32 /* iBeaconLocation.swift */,
 				D06FB16D1A38FB6900D78D32 /* Meshblu.swift */,
 				D0A8E6D31A2E7CE100BE8EF6 /* MainViewController.swift */,
 				D0A8E6B51A2E7B0700BE8EF6 /* Main.storyboard */,
@@ -139,6 +139,7 @@
 		D5D584322DDFD65B05F38603 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D04596711A3B600E0027F19C /* CoreLocation.framework */,
 				D08CF05FFFF98E1923938DF1 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -195,6 +196,11 @@
 				TargetAttributes = {
 					D0A8E6AB1A2E7B0700BE8EF6 = {
 						CreatedOnToolsVersion = 6.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					D0A8E6C01A2E7B0700BE8EF6 = {
 						CreatedOnToolsVersion = 6.1;
@@ -279,7 +285,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D06FB1701A38FEFC00D78D32 /* iBeaconLocation.swift in Sources */,
 				D06FB16E1A38FB6900D78D32 /* Meshblu.swift in Sources */,
 				D0A8E6B21A2E7B0700BE8EF6 /* AppDelegate.swift in Sources */,
 				D0A8E6D41A2E7CE100BE8EF6 /* MainViewController.swift in Sources */,

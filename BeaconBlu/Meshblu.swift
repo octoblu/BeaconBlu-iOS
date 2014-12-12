@@ -17,8 +17,8 @@ class Meshblu {
   
     // Constructor
     init(uuid : String, token : String){
-        self.uuid = uuid
-        self.token = token
+      self.uuid = uuid
+      self.token = token
     }
   
     func makeRequest(path : String, parameters : AnyObject, onResponse: () -> ()){

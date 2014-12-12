@@ -10,11 +10,10 @@ import UIKit
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate {
 
-  var iBeaconPaired : Bool = false
-  var iBeacon: iBeaconLocation?
   var uuid: String?
   var token: String?
-  var message: String = "Listening..."
+  var message: String = "Initializing..."
+  var meshblu : Meshblu?
   let LOGIN_URL = "http://app.octoblu.com/static/auth-login.html"
   
   @IBOutlet var tableView: UITableView!
@@ -51,21 +50,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     self.uuid = uuid
     self.token = token
     
-    let ibeacon = iBeaconLocation(uuid: self.uuid!, token: self.token!, onUpdate : {
-      update in
-      self.message = update
-      self.tableView.reloadData()
-      }, presentAlert : {
-        alertController in
-        self.presentViewController(alertController, animated: true, completion: nil)
-    })
-    ibeacon.requestAlwaysAuthorization()
+    self.meshblu = Meshblu(uuid: self.uuid!, token: self.token!)
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    
     
     let bounds = self.view.bounds;
     //let buttonFrame = CGRect(x: bounds.width, y: bounds.height, width: 100, height: 50)
@@ -105,7 +94,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     cell.textLabel?.text = self.message
     
     cell.textLabel?.textColor = UIColor.whiteColor()
-    cell.textLabel?.font = UIFont(name: "Helvetica-Bold", size: CGFloat(22.0))
+    cell.textLabel?.font = UIFont(name: "Helvetica-Bold", size: CGFloat(16.0))
     cell.selectionStyle = UITableViewCellSelectionStyle.None
     
     return cell
@@ -171,6 +160,23 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
   }
+  
+  func updateLocation(proximity: String, code : Int){
+    if self.meshblu == nil {
+      NSLog("Meshblu not initialized")
+      return
+    }
+    
+    var message = Dictionary<String, AnyObject>()
+    
+    message["payload"] = ["proximity" : proximity, "code" : code ]
+    message["devices"] = self.uuid
+    message["topic"] = "location_update"
 
+    self.meshblu?.makeRequest("/messages", parameters:
+      message as AnyObject, onResponse: {
+        NSLog("Message Sent: \(message)")
+      })
+  }
   
 }
