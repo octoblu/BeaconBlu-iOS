@@ -10,8 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate {
 
-  var uuid: String?
-  var token: String?
+  var userUuid: String?
   var message: String = "Initializing..."
   var meshblu : Meshblu?
   let LOGIN_URL = "http://app.octoblu.com/static/auth-login.html"
@@ -23,9 +22,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
   func logoutButton(){
     let settings = NSUserDefaults.standardUserDefaults()
     settings.removeObjectForKey("uuid")
-    settings.removeObjectForKey("token")
-    self.uuid = nil
-    self.token = nil
+    self.userUuid = nil
     self.startWebView()
   }
   
@@ -47,10 +44,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       return
     }
     
-    self.uuid = uuid
-    self.token = token
+    self.userUuid = uuid
     
-    self.meshblu = Meshblu(uuid: self.uuid!, token: self.token!)
+    self.meshblu = Meshblu()
   }
 
   override func viewDidLoad() {
@@ -162,15 +158,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
   }
   
   func updateLocation(proximity: String, code : Int){
-    if self.meshblu == nil {
+    if self.userUuid == nil {
       NSLog("Meshblu not initialized")
       return
     }
     
     var message = Dictionary<String, AnyObject>()
     
-    message["payload"] = ["proximity" : proximity, "code" : code ]
-    message["devices"] = self.uuid
+    message["payload"] = [
+      "proximity" : proximity,
+      "code" : code,
+      "userUuid" : self.userUuid!
+    ]
+    message["devices"] = "*"
     message["topic"] = "location_update"
 
     self.meshblu?.makeRequest("/messages", parameters:
