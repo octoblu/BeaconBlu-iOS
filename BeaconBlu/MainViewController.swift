@@ -27,6 +27,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
   }
   
   func startWebView(){
+    NSLog("Starting Web View")
     let frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
     self.webView = UIWebView(frame: frame)
     self.webView.delegate = self
@@ -113,6 +114,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
   
   func setUuidAndToken(uuid : String, token : String) {
     let settings = NSUserDefaults.standardUserDefaults()
+    self.userUuid = uuid
     settings.setObject(uuid, forKey: "uuid")
     settings.setObject(token, forKey: "token")
     NSLog("UUID : \(uuid) TOKEN : \(token)")

@@ -196,6 +196,7 @@
 				TargetAttributes = {
 					D0A8E6AB1A2E7B0700BE8EF6 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = JLSZ8Q5945;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -413,9 +414,12 @@
 			baseConfigurationReference = 500BFFA1300ED8599C21E2B3 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BeaconBlu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BeaconBlu/Bridging-Header.h";
 			};
 			name = Debug;
@@ -425,9 +429,12 @@
 			baseConfigurationReference = 17A8A6E0DF472B8EB9FD92D1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BeaconBlu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BeaconBlu/Bridging-Header.h";
 			};
 			name = Release;
