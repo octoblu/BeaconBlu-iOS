@@ -413,7 +413,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 500BFFA1300ED8599C21E2B3 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = GreenAndBlu;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BeaconBlu/Info.plist;
@@ -428,7 +428,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 17A8A6E0DF472B8EB9FD92D1 /* Pods.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = GreenAndBlu;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BeaconBlu/Info.plist;
