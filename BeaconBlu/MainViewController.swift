@@ -11,19 +11,35 @@ import UIKit
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate {
 
   var userUuid: String?
+  var userEmail: String?
   var message: String = "Initializing..."
   var meshblu : Meshblu?
   let LOGIN_URL = "http://app.octoblu.com/static/auth-login.html"
+  
+  var emailTextField : UITextField?
   
   @IBOutlet var tableView: UITableView!
   
   @IBOutlet var webView: UIWebView!
   
+  @IBOutlet var profileView: UIView!
+  
   func logoutButton(){
     let settings = NSUserDefaults.standardUserDefaults()
     settings.removeObjectForKey("uuid")
+    settings.removeObjectForKey("token")
+    settings.removeObjectForKey("email")
     self.userUuid = nil
+    self.userEmail = nil
     self.startWebView()
+  }
+  
+  func doneWithProfile(){
+    let settings = NSUserDefaults.standardUserDefaults()
+    let email = self.emailTextField!.text
+    settings.setObject(email, forKey: "email")
+    self.userEmail = email
+    self.profileView.removeFromSuperview()
   }
   
   func startWebView(){
@@ -35,17 +51,60 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     self.view.addSubview(self.webView)
   }
   
+  func startProfileView(){
+    NSLog("Starting Profile View")
+    
+    let profileViewFrame = CGRect(x: 0, y: 16, width: self.view.bounds.width, height: self.view.bounds.height)
+    
+    self.profileView = UIView(frame: profileViewFrame)
+    self.profileView.backgroundColor = UIColor.darkGrayColor()
+    
+    // Add Title
+    let titleFieldFrame = CGRect(x: 15, y: 15, width: self.view.bounds.width, height: 45)
+    let titleField = UITextView(frame: titleFieldFrame)
+    titleField.text = "Edit Profile Settings"
+    titleField.textColor = UIColor.whiteColor()
+    titleField.backgroundColor = UIColor.clearColor()
+    titleField.font = UIFont(name: "Helvetica", size: 22.0)
+    self.profileView.addSubview(titleField)
+    
+    // Add Text Field
+    let textFieldFrame = CGRect(x: 15, y: 65, width: self.view.bounds.width - 30, height: 30)
+    emailTextField = UITextField(frame: textFieldFrame)
+    emailTextField!.backgroundColor = UIColor.whiteColor()
+    emailTextField!.text = self.userEmail!
+    emailTextField!.placeholder = "Email Address"
+    emailTextField!.keyboardType = UIKeyboardType.EmailAddress
+    self.profileView.addSubview(self.emailTextField!)
+    
+    // Add Button
+    let buttonFrame = CGRect(x: self.view.bounds.width - 100, y: 85, width: 100, height: 50)
+    let doneWithProfileButton = UIButton(frame: buttonFrame)
+    doneWithProfileButton.setTitle("Done", forState: .Normal)
+    doneWithProfileButton.addTarget(self, action: Selector("doneWithProfile"), forControlEvents: .TouchUpInside)
+    self.profileView.addSubview(doneWithProfileButton)
+    
+    self.view.addSubview(self.profileView)
+  }
+  
   func initalize() {
     let settings = NSUserDefaults.standardUserDefaults()
     let uuid  = settings.stringForKey("uuid")
     let token = settings.stringForKey("token")
+    let email = settings.stringForKey("email")
     
-    if(uuid == nil || token == nil){
+    if uuid == nil || token == nil {
       self.startWebView()
       return
     }
     
+    if email == nil {
+      self.startProfileView()
+      return
+    }
+    
     self.userUuid = uuid
+    self.userEmail = email
     
     self.meshblu = Meshblu()
   }
@@ -61,12 +120,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     logoutButton.addTarget(self, action: Selector("logoutButton"), forControlEvents: .TouchUpInside)
     self.tableView.addSubview(logoutButton)
     
+    let profileButtonFrame = CGRect(x: 5, y: bounds.height - 55, width: 100, height: 50)
+    let profileButton = UIButton(frame: profileButtonFrame)
+    profileButton.setTitle("Profile", forState: .Normal)
+    profileButton.addTarget(self, action: Selector("startProfileView"), forControlEvents: .TouchUpInside)
+    self.tableView.addSubview(profileButton)
+    
     self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     
     self.tableView.separatorColor = UIColor.clearColor()
     self.tableView.rowHeight = CGFloat(69.0) // Hehe
     self.tableView.backgroundColor = UIColor.darkGrayColor()
     self.initalize()
+    
   }
   
   override func viewDidAppear(animated: Bool) {
@@ -170,7 +236,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     message["payload"] = [
       "proximity" : proximity,
       "code" : code,
-      "userUuid" : self.userUuid!
+      "userUuid" : self.userUuid!,
+      "email" : self.userEmail!
     ]
     message["devices"] = "*"
     message["topic"] = "location_update"
