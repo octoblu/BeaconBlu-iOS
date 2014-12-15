@@ -84,8 +84,7 @@ extension AppDelegate: CLLocationManagerDelegate {
     if(beacons.count > 0) {
       let nearestBeacon:CLBeacon = beacons[0] as CLBeacon
       
-      if(nearestBeacon.proximity == lastProximity ||
-        nearestBeacon.proximity == CLProximity.Unknown) {
+      if(nearestBeacon.proximity == lastProximity) {
           return;
       }
       lastProximity = nearestBeacon.proximity;
@@ -101,7 +100,8 @@ extension AppDelegate: CLLocationManagerDelegate {
         message = "Immediate proximity to beacon"
         code = 1
       case CLProximity.Unknown:
-        return
+        message = "No beacons are nearby"
+        code = 0
       }
     } else {
       
