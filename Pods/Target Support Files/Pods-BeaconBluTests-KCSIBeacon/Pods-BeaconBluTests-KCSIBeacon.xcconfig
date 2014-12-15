@@ -1,1 +1,0 @@
-PODS_BEACONBLUTESTS_KCSIBEACON_OTHER_LDFLAGS = -framework "CoreBluetooth" -framework "CoreLocation" -framework "UIKit"
