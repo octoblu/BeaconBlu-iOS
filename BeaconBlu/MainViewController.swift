@@ -237,7 +237,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       "proximity" : proximity,
       "code" : code,
       "userUuid" : self.userUuid!,
-      "email" : self.userEmail
+      "email" : self.userEmail!
     ]
     message["devices"] = "*"
     message["topic"] = "location_update"
