@@ -72,7 +72,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     let textFieldFrame = CGRect(x: 15, y: 65, width: self.view.bounds.width - 30, height: 30)
     emailTextField = UITextField(frame: textFieldFrame)
     emailTextField!.backgroundColor = UIColor.whiteColor()
-    emailTextField!.text = self.userEmail!
+    emailTextField!.text = self.userEmail
     emailTextField!.placeholder = "Email Address"
     emailTextField!.keyboardType = UIKeyboardType.EmailAddress
     self.profileView.addSubview(self.emailTextField!)
