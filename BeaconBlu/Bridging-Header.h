@@ -7,4 +7,3 @@
 //
 
 #import "AFNetworking.h"
-#import "KCSIBeacon.h"
