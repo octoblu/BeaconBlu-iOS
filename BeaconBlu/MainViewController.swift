@@ -28,6 +28,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     let settings = NSUserDefaults.standardUserDefaults()
     settings.removeObjectForKey("uuid")
     settings.removeObjectForKey("token")
+    settings.removeObjectForKey("deviceUuid")
+    settings.removeObjectForKey("deviceToken")
     settings.removeObjectForKey("email")
     self.userUuid = nil
     self.userEmail = nil
@@ -91,6 +93,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     let settings = NSUserDefaults.standardUserDefaults()
     let uuid  = settings.stringForKey("uuid")
     let token = settings.stringForKey("token")
+    let deviceUuid  = settings.stringForKey("deviceUuid")
+    let deviceToken = settings.stringForKey("deviceToken")
     let email = settings.stringForKey("email")
     
     if uuid == nil || token == nil {
@@ -106,7 +110,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     self.userUuid = uuid
     self.userEmail = email
     
-    self.meshblu = Meshblu()
+    self.meshblu = Meshblu(uuid: deviceUuid, token: deviceToken)
+    if deviceUuid == nil && deviceToken == nil {
+      self.meshblu!.register({ (responseObj: Dictionary<String, AnyObject>?) in
+    
+      })
+    }
   }
 
   override func viewDidLoad() {
@@ -144,17 +153,26 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    return 3
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
     
-    cell.backgroundColor = UIColor(red : CGFloat(68 / 255.0), green: CGFloat(140 / 255.0), blue : CGFloat(203 / 255.0), alpha : 1.0)
     
     cell.textLabel?.textAlignment = NSTextAlignment.Center
 
-    cell.textLabel?.text = self.message
+    switch indexPath.item {
+    case 0:
+      cell.backgroundColor = UIColor.grayColor()
+      cell.textLabel?.text = "UUID: \(self.meshblu!.uuid!)"
+    case 1:
+      cell.textLabel?.text = "Token: \(self.meshblu!.token!)"
+      cell.backgroundColor = UIColor.grayColor()
+    default:
+      cell.backgroundColor = UIColor(red : CGFloat(68 / 255.0), green: CGFloat(140 / 255.0), blue : CGFloat(203 / 255.0), alpha : 1.0)
+      cell.textLabel?.text = self.message
+    }
     
     cell.textLabel?.textColor = UIColor.whiteColor()
     cell.textLabel?.font = UIFont(name: "Helvetica-Bold", size: CGFloat(16.0))
@@ -243,7 +261,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     message["topic"] = "location_update"
 
     self.meshblu?.makeRequest("/messages", parameters:
-      message as AnyObject, onResponse: {
+      message as AnyObject, onResponse: { (responseObj : Dictionary<String, AnyObject>?) in
         NSLog("Message Sent: \(message)")
       })
   }
