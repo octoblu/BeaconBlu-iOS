@@ -165,9 +165,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     switch indexPath.item {
     case 0:
       cell.backgroundColor = UIColor.grayColor()
-      cell.textLabel?.text = "UUID: \(self.meshblu!.uuid!)"
+      if self.meshblu? != nil  && self.meshblu!.uuid? != nil {
+        cell.textLabel?.text = "UUID: \(self.meshblu!.uuid!)"
+      }
     case 1:
-      cell.textLabel?.text = "Token: \(self.meshblu!.token!)"
+      if self.meshblu? != nil && self.meshblu!.token? != nil {
+        cell.textLabel?.text = "Token: \(self.meshblu!.token!)"
+      }
       cell.backgroundColor = UIColor.grayColor()
     default:
       cell.backgroundColor = UIColor(red : CGFloat(68 / 255.0), green: CGFloat(140 / 255.0), blue : CGFloat(203 / 255.0), alpha : 1.0)
