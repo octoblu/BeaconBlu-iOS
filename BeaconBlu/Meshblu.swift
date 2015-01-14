@@ -21,7 +21,7 @@ class Meshblu {
   }
 
   func register(onResponse: (responseObj: Dictionary<String, AnyObject>?) -> ()){
-    let registrationParameters = ["type": "BeaconBlu", "online" : "true"]
+    let registrationParameters = ["type": "device:beacon-blu", "online" : "true"]
     self.makeRequest("/devices", parameters: registrationParameters, onResponse: { (responseObj: Dictionary<String, AnyObject>?) in
       if responseObj == nil {
         NSLog("Unable to register")
