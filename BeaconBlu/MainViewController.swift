@@ -42,6 +42,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     settings.setObject(email, forKey: "email")
     self.userEmail = email
     self.profileView.removeFromSuperview()
+    self.tableView.reloadData()
   }
   
   func startWebView(){
@@ -153,22 +154,27 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 3
+    if self.meshblu == nil {
+      return 0
+    }
+    return 2
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
-    
-    
     cell.textLabel?.textAlignment = NSTextAlignment.Center
+    
+    if self.meshblu == nil {
+      return cell
+    }
 
     switch indexPath.item {
     case 0:
+      if self.meshblu!.uuid == nil {
+        return cell
+      }
       cell.backgroundColor = UIColor.grayColor()
       cell.textLabel?.text = "UUID: \(self.meshblu!.uuid!)"
-    case 1:
-      cell.textLabel?.text = "Token: \(self.meshblu!.token!)"
-      cell.backgroundColor = UIColor.grayColor()
     default:
       cell.backgroundColor = UIColor(red : CGFloat(68 / 255.0), green: CGFloat(140 / 255.0), blue : CGFloat(203 / 255.0), alpha : 1.0)
       cell.textLabel?.text = self.message
