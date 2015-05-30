@@ -28,8 +28,8 @@ class Meshblu {
         return
       }
       NSLog("Device Created")
-      self.uuid = responseObj!["uuid"] as String?
-      self.token = responseObj!["token"] as String?
+      self.uuid = responseObj!["uuid"] as! String?
+      self.token = (responseObj!["token"] as? String?)!
       let settings = NSUserDefaults.standardUserDefaults()
       settings.setObject(self.uuid, forKey: "deviceUuid")
       settings.setObject(self.token, forKey: "deviceToken")
@@ -46,7 +46,7 @@ class Meshblu {
       (operation :AFHTTPRequestOperation!, responseObject :AnyObject!) -> Void in
       
       //SVProgressHUD.showSuccessWithStatus("Sent!")
-      let dictResponse = responseObject as Dictionary<String, AnyObject>?
+      let dictResponse = responseObject as! Dictionary<String, AnyObject>?
       onResponse(responseObj: dictResponse);
       NSLog("requestSuccess \(responseObject)")
     }

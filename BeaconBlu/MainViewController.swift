@@ -161,7 +161,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+    var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
     cell.textLabel?.textAlignment = NSTextAlignment.Center
     
     if self.meshblu == nil {
@@ -189,7 +189,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
   
   func clearCookies(){
     let cookieStore = NSHTTPCookieStorage.sharedHTTPCookieStorage()
-    for cookie in cookieStore.cookies as Array<NSHTTPCookie> {
+    for cookie in cookieStore.cookies as! Array<NSHTTPCookie> {
       cookieStore.deleteCookie(cookie)
     }
   }
@@ -213,7 +213,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
   }
   
   func webViewDidFinishLoad(webView: UIWebView) {
-    let currentUrl : String? = webView.request?.URL.absoluteString;
+    let currentUrl : String? = webView.request?.URL!.absoluteString;
     if currentUrl == nil || currentUrl! == "" {
       return
     }
@@ -222,7 +222,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     let queryItems  = NSURLComponents(string: currentUrl!)?.queryItems
-      as Array<NSURLQueryItem>
+      as! Array<NSURLQueryItem>
     
     let keys = queryItems.map({(queryItem) -> String in queryItem.name})
     if(!contains(keys, "uuid") || !contains(keys, "token")) {

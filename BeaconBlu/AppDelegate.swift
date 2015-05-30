@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     // Override point for customization after application launch.
     
     let beaconIdentifier = "iBeaconModules.us"
-    let beaconUUID:NSUUID? = NSUUID(UUIDString: self.iBeaconUUID)
+    let beaconUUID:NSUUID? = NSUUID(UUIDString: self.iBeaconUUID as String)
     let beaconRegion:CLBeaconRegion = CLBeaconRegion(proximityUUID:beaconUUID, identifier: beaconIdentifier)
     
     locationManager = CLLocationManager()
@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 extension AppDelegate: CLLocationManagerDelegate {
   
   func getMainControler() -> MainViewController {
-    let viewController:MainViewController = window!.rootViewController as MainViewController
+    let viewController:MainViewController = window!.rootViewController as! MainViewController
     return viewController
   }
   
@@ -83,7 +83,7 @@ extension AppDelegate: CLLocationManagerDelegate {
     var message:String = ""
     var code: Int = -1
     if(beacons.count > 0) {
-      let nearestBeacon:CLBeacon = beacons[0] as CLBeacon
+      let nearestBeacon:CLBeacon = beacons[0] as! CLBeacon
       
       if(nearestBeacon.proximity == lastProximity) {
           return;
@@ -121,7 +121,7 @@ extension AppDelegate: CLLocationManagerDelegate {
   
   func locationManager(manager: CLLocationManager!,
     didEnterRegion region: CLRegion!) {
-      manager.startRangingBeaconsInRegion(region as CLBeaconRegion)
+      manager.startRangingBeaconsInRegion(region as! CLBeaconRegion)
       manager.startUpdatingLocation()
       
       self.updateMainViewWithMessage("Beacon Entered Region")
@@ -129,7 +129,7 @@ extension AppDelegate: CLLocationManagerDelegate {
   
   func locationManager(manager: CLLocationManager!,
     didExitRegion region: CLRegion!) {
-      manager.stopRangingBeaconsInRegion(region as CLBeaconRegion)
+      manager.stopRangingBeaconsInRegion(region as! CLBeaconRegion)
       manager.stopUpdatingLocation()
       
       self.updateMainViewWithMessage("Beacon Exitied Region")
