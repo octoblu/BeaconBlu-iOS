@@ -14,4 +14,5 @@ target 'BeaconBluTests' do
 
 end
 
-pod "AFNetworking"
+pod "MeshbluKit", :path => "../MeshbluKit"
+pod "MeshbluBeaconKit", :path => "../MeshbluBeaconKit"
