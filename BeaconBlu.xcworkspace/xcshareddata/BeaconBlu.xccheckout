@@ -12,6 +12,10 @@
 	<dict>
 		<key>3F5FD7F41E06257981A46C4C56B6462F22657AED</key>
 		<string>github.com:octoblu/BeaconBlu-iOS.git</string>
+		<key>8F4B65A659A867E569CEB7A1D7BF0CB65B9EF75B</key>
+		<string>github.com:octoblu/MeshbluKit.git</string>
+		<key>FE3D27641B1821F559D81C81D1359F567895D4CD</key>
+		<string>github.com:octoblu/MeshbluBeaconKit.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>BeaconBlu.xcworkspace</string>
@@ -19,6 +23,10 @@
 	<dict>
 		<key>3F5FD7F41E06257981A46C4C56B6462F22657AED</key>
 		<string>..</string>
+		<key>8F4B65A659A867E569CEB7A1D7BF0CB65B9EF75B</key>
+		<string>../../MeshbluKit</string>
+		<key>FE3D27641B1821F559D81C81D1359F567895D4CD</key>
+		<string>../../MeshbluBeaconKit</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:octoblu/BeaconBlu-iOS.git</string>
@@ -35,6 +43,22 @@
 			<string>3F5FD7F41E06257981A46C4C56B6462F22657AED</string>
 			<key>IDESourceControlWCCName</key>
 			<string>BeaconBlu</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FE3D27641B1821F559D81C81D1359F567895D4CD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MeshbluBeaconKit</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8F4B65A659A867E569CEB7A1D7BF0CB65B9EF75B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MeshbluKit</string>
 		</dict>
 	</array>
 </dict>

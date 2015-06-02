@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import MeshbluKit
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate {
 
   var userUuid: String?
   var userEmail: String?
   var message: String = "Initializing..."
-  var meshblu : Meshblu?
+  var meshblu = MeshbluKit()
   let LOGIN_URL = "http://app.octoblu.com/static/auth-login.html"
   
   var emailTextField : UITextField?
@@ -110,11 +111,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     self.userUuid = uuid
     self.userEmail = email
+    self.meshblu.uuid = deviceUuid
+    self.meshblu.token = deviceToken
     
-    self.meshblu = Meshblu(uuid: deviceUuid, token: deviceToken)
     if deviceUuid == nil && deviceToken == nil {
-      self.meshblu!.register({ (responseObj: Dictionary<String, AnyObject>?) in
-    
+      self.meshblu.register({ (responseObj: Dictionary<String, AnyObject>?) in
       })
     }
   }
@@ -154,9 +155,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if self.meshblu == nil {
-      return 0
-    }
     return 2
   }
   
@@ -164,17 +162,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
     cell.textLabel?.textAlignment = NSTextAlignment.Center
     
-    if self.meshblu == nil {
-      return cell
-    }
-
     switch indexPath.item {
     case 0:
-      if self.meshblu!.uuid == nil {
+      if self.meshblu.uuid == nil {
         return cell
       }
       cell.backgroundColor = UIColor.grayColor()
-      cell.textLabel?.text = "UUID: \(self.meshblu!.uuid!)"
+      cell.textLabel?.text = "UUID: \(self.meshblu.uuid!)"
     default:
       cell.backgroundColor = UIColor(red : CGFloat(68 / 255.0), green: CGFloat(140 / 255.0), blue : CGFloat(203 / 255.0), alpha : 1.0)
       cell.textLabel?.text = self.message
@@ -266,7 +260,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     message["devices"] = "*"
     message["topic"] = "location_update"
 
-    self.meshblu?.makeRequest("/messages", parameters:
+    self.meshblu.makeRequest("/messages", parameters:
       message as AnyObject, onResponse: { (responseObj : Dictionary<String, AnyObject>?) in
         NSLog("Message Sent: \(message)")
       })
