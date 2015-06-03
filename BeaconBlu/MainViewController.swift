@@ -14,7 +14,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
   var userUuid: String?
   var userEmail: String?
   var message: String = "Initializing..."
-  var meshblu = MeshbluKit()
+  var meshblu = MeshbluHttp(meshbluUrl: "https://meshblu.octoblu.com")
   let LOGIN_URL = "http://app.octoblu.com/static/auth-login.html"
   
   var emailTextField : UITextField?
@@ -115,8 +115,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     self.meshblu.token = deviceToken
     
     if deviceUuid == nil && deviceToken == nil {
-      self.meshblu.register({ (responseObj: Dictionary<String, AnyObject>?) in
-      })
+      self.meshblu.register() { (result) in
+      }
     }
   }
 
@@ -260,10 +260,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     message["devices"] = "*"
     message["topic"] = "location_update"
 
-    self.meshblu.makeRequest("/messages", parameters:
-      message as AnyObject, onResponse: { (responseObj : Dictionary<String, AnyObject>?) in
-        NSLog("Message Sent: \(message)")
-      })
+//    self.meshblu.makeRequest("/messages", parameters:
+//      message as AnyObject, onResponse: { (responseObj : Dictionary<String, AnyObject>?) in
+//        NSLog("Message Sent: \(message)")
+//      })
   }
   
 }

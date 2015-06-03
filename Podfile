@@ -14,5 +14,5 @@ target 'BeaconBluTests' do
 
 end
 
-pod 'MeshbluKit'
-pod 'MeshbluBeaconKit', :path => '../MeshbluBeaconKit'
+pod 'MeshbluKit', '~> 0.2.0'
+pod 'MeshbluBeaconKit', '~> 0.1.1'

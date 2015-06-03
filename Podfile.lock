@@ -1,41 +1,26 @@
 PODS:
-  - AFNetworking (2.5.4):
-    - AFNetworking/NSURLConnection (= 2.5.4)
-    - AFNetworking/NSURLSession (= 2.5.4)
-    - AFNetworking/Reachability (= 2.5.4)
-    - AFNetworking/Security (= 2.5.4)
-    - AFNetworking/Serialization (= 2.5.4)
-    - AFNetworking/UIKit (= 2.5.4)
-  - AFNetworking/NSURLConnection (2.5.4):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.4):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.4)
-  - AFNetworking/Security (2.5.4)
-  - AFNetworking/Serialization (2.5.4)
-  - AFNetworking/UIKit (2.5.4):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-  - MeshbluBeaconKit (0.1.0):
-    - MeshbluKit (~> 0.1.0)
-  - MeshbluKit (0.1.0):
-    - AFNetworking (~> 2.3)
+  - Alamofire (1.2.2)
+  - Box (1.2.2)
+  - MeshbluBeaconKit (0.1.1):
+    - MeshbluKit (~> 0.2.0)
+  - MeshbluKit (0.2.0):
+    - Alamofire (~> 1.2)
+    - Result
+    - SwiftyJSON (~> 2.2.0)
+  - Result (0.4.3):
+    - Box (~> 1.2)
+  - SwiftyJSON (2.2.0)
 
 DEPENDENCIES:
-  - MeshbluBeaconKit (from `../MeshbluBeaconKit`)
-  - MeshbluKit
-
-EXTERNAL SOURCES:
-  MeshbluBeaconKit:
-    :path: ../MeshbluBeaconKit
+  - MeshbluBeaconKit (~> 0.1.1)
+  - MeshbluKit (~> 0.2.0)
 
 SPEC CHECKSUMS:
-  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
-  MeshbluBeaconKit: 69f7cfb148ac7590598cc5205e0c1c3245e473a0
-  MeshbluKit: 64e8355ed02fcb138a7545397b9298a5ea1821a2
+  Alamofire: 11a6022f5089887d92ffb5a3014c97a0a915ab98
+  Box: a92e8aa4c099e6bc0733829665caf9e668ef53b8
+  MeshbluBeaconKit: 6ce84b3c04e3b38f69721c5a8549fcf0326f8c1d
+  MeshbluKit: 9ca4ed575603be837ea58ebc16457b987b80da83
+  Result: 910839ce03c5c573ec94026678b7cecb69ee862e
+  SwiftyJSON: 0b3e6c07af17ff745e77e8e9984097b55c956e5c
 
 COCOAPODS: 0.37.2
