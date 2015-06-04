@@ -14,7 +14,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
   var userUuid: String?
   var userEmail: String?
   var message: String = "Initializing..."
-  var meshblu = MeshbluHttp(meshbluUrl: "https://meshblu.octoblu.com")
   let LOGIN_URL = "http://app.octoblu.com/static/auth-login.html"
   
   var emailTextField : UITextField?
@@ -111,12 +110,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     self.userUuid = uuid
     self.userEmail = email
-    self.meshblu.uuid = deviceUuid
-    self.meshblu.token = deviceToken
     
     if deviceUuid == nil && deviceToken == nil {
-      self.meshblu.register() { (result) in
-      }
     }
   }
 
@@ -199,8 +194,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
   func setUuidAndToken(uuid : String, token : String) {
     let settings = NSUserDefaults.standardUserDefaults()
     self.userUuid = uuid
-    settings.setObject(uuid, forKey: "uuid")
-    settings.setObject(token, forKey: "token")
+    settings.setObject(uuid, forKey: "userUuid")
+    settings.setObject(token, forKey: "userToken")
     NSLog("UUID : \(uuid) TOKEN : \(token)")
     self.webView.removeFromSuperview()
     self.initalize()
@@ -242,28 +237,4 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
   }
-  
-  func updateLocation(proximity: String, code : Int){
-    if self.userUuid == nil {
-      NSLog("Meshblu not initialized")
-      return
-    }
-    
-    var message = Dictionary<String, AnyObject>()
-    
-    message["payload"] = [
-      "proximity" : proximity,
-      "code" : code,
-      "userUuid" : self.userUuid!,
-      "email" : self.userEmail!
-    ]
-    message["devices"] = "*"
-    message["topic"] = "location_update"
-
-//    self.meshblu.makeRequest("/messages", parameters:
-//      message as AnyObject, onResponse: { (responseObj : Dictionary<String, AnyObject>?) in
-//        NSLog("Message Sent: \(message)")
-//      })
-  }
-  
 }

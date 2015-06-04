@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import MeshbluBeaconKit
+import SwiftyJSON
 
 @UIApplicationMain
 
@@ -19,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MeshbluBeaconKitDelegate 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
     
-    meshbluBeaconKit.start("CF593B78-DA79-4077-ABA3-940085DF45CA", delegate: self)
+    let meshbluConfig : [String: AnyObject] = [:]
+    
+    meshbluBeaconKit.start("CF593B78-DA79-4077-ABA3-940085DF45CA", meshbluConfig: meshbluConfig, delegate: self)
 
     return true
   }
@@ -61,6 +64,12 @@ extension AppDelegate: MeshbluBeaconKitDelegate {
     viewController.tableView!.reloadData()
   }
   
+  func meshbluBeaconRegistered(device: JSON){
+    let settings = NSUserDefaults.standardUserDefaults()
+    settings.setObject(device["uuid"].stringValue, forKey: "deviceUuid")
+    settings.setObject(device["token"].stringValue, forKey: "deviceToken")
+  }
+  
   func proximityChanged(code: Int) {
     var message = ""
     switch(code) {
@@ -79,6 +88,19 @@ extension AppDelegate: MeshbluBeaconKitDelegate {
     let viewController = getMainControler()
     viewController.updateLocation(message, code: code)
     self.updateMainViewWithMessage(message)
+    self.meshbluBeaconKit.sendLocationUpdate()
+  }
+  
+  func meshbluBeaconIsUnregistered() {
+    self.meshbluBeaconKit.register()
+  }
+  
+  func meshbluBeaconRegistrationSuccess(data: NSData) {
+    let device = JSON(data)
+    let settings = NSUserDefaults.standardUserDefaults()
+
+    settings.setObject(device["uuid"].string, forKey: "uuid")
+    settings.setObject(device["token"].string, forKey: "token")
   }
   
   func beaconEnteredRegion() {
@@ -88,4 +110,5 @@ extension AppDelegate: MeshbluBeaconKitDelegate {
   func beaconExitedRegion() {
     self.updateMainViewWithMessage("Beacon Exitied Region")
   }
+  
 }
