@@ -71,7 +71,8 @@ extension AppDelegate: MeshbluBeaconKitDelegate {
   
   func proximityChanged(response: [String: AnyObject]) {
     var message = ""
-    switch(response["code"] as! Int) {
+    let proximity = response["proximity"] as! [String: AnyObject]
+    switch(proximity["code"] as! Int) {
     case 3:
       message = "Far away from beacon"
     case 2:

@@ -5,5 +5,5 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'BeaconBlu' do
-  pod 'MeshbluBeaconKit', :path => "../MeshbluBeaconKit"
+  pod 'MeshbluBeaconKit', '~> 1.0'
 end
