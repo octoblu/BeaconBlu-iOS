@@ -159,11 +159,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     switch indexPath.item {
     case 0:
-      if self.meshblu.uuid == nil {
-        return cell
-      }
       cell.backgroundColor = UIColor.grayColor()
-      cell.textLabel?.text = "UUID: \(self.meshblu.uuid!)"
+//      cell.textLabel?.text = "UUID: \(self.meshblu.uuid!)"
     default:
       cell.backgroundColor = UIColor(red : CGFloat(68 / 255.0), green: CGFloat(140 / 255.0), blue : CGFloat(203 / 255.0), alpha : 1.0)
       cell.textLabel?.text = self.message

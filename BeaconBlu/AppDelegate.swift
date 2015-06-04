@@ -15,14 +15,19 @@ import SwiftyJSON
 
 class AppDelegate: UIResponder, UIApplicationDelegate, MeshbluBeaconKitDelegate {
   var window: UIWindow?
-  let meshbluBeaconKit = MeshbluBeaconKit()
+  var meshbluBeaconKit : MeshbluBeaconKit!
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
     
-    let meshbluConfig : [String: AnyObject] = [:]
+    var meshbluConfig = Dictionary<String, AnyObject>()
+    let settings = NSUserDefaults.standardUserDefaults()
     
-    meshbluBeaconKit.start("CF593B78-DA79-4077-ABA3-940085DF45CA", meshbluConfig: meshbluConfig, delegate: self)
+    meshbluConfig["uuid"] = settings.stringForKey("uuid")
+    meshbluConfig["token"] = settings.stringForKey("token")
+    
+    self.meshbluBeaconKit = MeshbluBeaconKit(meshbluConfig: meshbluConfig)
+    meshbluBeaconKit.start("CF593B78-DA79-4077-ABA3-940085DF45CA", delegate: self)
 
     return true
   }
@@ -64,15 +69,9 @@ extension AppDelegate: MeshbluBeaconKitDelegate {
     viewController.tableView!.reloadData()
   }
   
-  func meshbluBeaconRegistered(device: JSON){
-    let settings = NSUserDefaults.standardUserDefaults()
-    settings.setObject(device["uuid"].stringValue, forKey: "deviceUuid")
-    settings.setObject(device["token"].stringValue, forKey: "deviceToken")
-  }
-  
-  func proximityChanged(code: Int) {
+  func proximityChanged(response: [String: AnyObject]) {
     var message = ""
-    switch(code) {
+    switch(response["code"] as! Int) {
     case 3:
       message = "Far away from beacon"
     case 2:
@@ -86,21 +85,23 @@ extension AppDelegate: MeshbluBeaconKitDelegate {
     }
     
     let viewController = getMainControler()
-    viewController.updateLocation(message, code: code)
     self.updateMainViewWithMessage(message)
-    self.meshbluBeaconKit.sendLocationUpdate()
+    self.meshbluBeaconKit.sendLocationUpdate(response) {
+      (result) -> () in
+    }
   }
   
   func meshbluBeaconIsUnregistered() {
     self.meshbluBeaconKit.register()
   }
   
-  func meshbluBeaconRegistrationSuccess(data: NSData) {
-    let device = JSON(data)
+  func meshbluBeaconRegistrationSuccess(device: [String: AnyObject]) {
     let settings = NSUserDefaults.standardUserDefaults()
+    let uuid = device["uuid"] as! String
+    let token = device["token"] as! String
 
-    settings.setObject(device["uuid"].string, forKey: "uuid")
-    settings.setObject(device["token"].string, forKey: "token")
+    settings.setObject(uuid, forKey: "uuid")
+    settings.setObject(token, forKey: "token")
   }
   
   func beaconEnteredRegion() {
