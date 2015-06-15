@@ -26,8 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MeshbluBeaconKitDelegate 
     meshbluConfig["uuid"] = settings.stringForKey("uuid")
     meshbluConfig["token"] = settings.stringForKey("token")
     
+    println("meshbluConfig: \(meshbluConfig)")
+    
     self.meshbluBeaconKit = MeshbluBeaconKit(meshbluConfig: meshbluConfig)
-    meshbluBeaconKit.start("CF593B78-DA79-4077-ABA3-940085DF45CA", delegate: self)
+    meshbluBeaconKit.start("CF593B78-DA79-4077-ABA3-940085DF45CA", beaconIdentifier: "iBeaconModules.us", delegate: self)
 
     return true
   }
