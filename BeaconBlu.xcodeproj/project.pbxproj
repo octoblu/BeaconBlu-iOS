@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06F2FD821B8B7BAD005D636F /* web_hi_res_512.png in Resources */ = {isa = PBXBuildFile; fileRef = 06F2FD811B8B7BAD005D636F /* web_hi_res_512.png */; };
 		D04596721A3B600E0027F19C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04596711A3B600E0027F19C /* CoreLocation.framework */; };
 		D0A8E6B21A2E7B0700BE8EF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A8E6B11A2E7B0700BE8EF6 /* AppDelegate.swift */; };
 		D0A8E6B71A2E7B0700BE8EF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A8E6B51A2E7B0700BE8EF6 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06F2FD811B8B7BAD005D636F /* web_hi_res_512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = web_hi_res_512.png; path = "../../../../Dropbox/Octoblu/BeaconBlu-Android/BeaconBlu-Android-Icons/web_hi_res_512.png"; sourceTree = "<group>"; };
 		0FBAAC6BD223E4D4B8FA0E34 /* Pods_BeaconBlu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaconBlu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17A8A6E0DF472B8EB9FD92D1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		239EEC65C4232B2A2CF1331E /* Pods_BeaconBluTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaconBluTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +101,7 @@
 		D0A8E6AF1A2E7B0700BE8EF6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				06F2FD811B8B7BAD005D636F /* web_hi_res_512.png */,
 				D0A8E6B01A2E7B0700BE8EF6 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -201,6 +204,7 @@
 				D0A8E6B71A2E7B0700BE8EF6 /* Main.storyboard in Resources */,
 				D0A8E6BC1A2E7B0700BE8EF6 /* LaunchScreen.xib in Resources */,
 				D0A8E6B91A2E7B0700BE8EF6 /* Images.xcassets in Resources */,
+				06F2FD821B8B7BAD005D636F /* web_hi_res_512.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
