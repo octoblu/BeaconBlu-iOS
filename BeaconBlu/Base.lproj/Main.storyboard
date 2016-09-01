@@ -1,80 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="BeaconBlu" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vQl-Qg-Eo3"/>
-                        <viewControllerLayoutGuide type="bottom" id="JMX-aO-yaf"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="WJD-uF-LwJ" userLabel="MainView">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nEf-m1-5Yu">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="web_hi_res_512.png" highlightedImage="web_hi_res_512.png" translatesAutoresizingMaskIntoConstraints="NO" id="HPi-3H-u2w">
-                                <rect key="frame" x="175" y="28" width="250" height="243"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="BeaconBlu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P48-oU-nVO">
-                                <rect key="frame" x="232" y="289" width="136" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0e-2E-Rfa">
-                                <rect key="frame" x="155" y="529" width="290" height="51"/>
-                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                                <color key="tintColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Claim BeaconBlu"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMC-0S-jO0">
-                                <rect key="frame" x="155" y="470" width="290" height="51"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                                <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="View Beacons"/>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="P48-oU-nVO" firstAttribute="top" secondItem="HPi-3H-u2w" secondAttribute="bottom" constant="8" id="1yb-5D-2Sd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HPi-3H-u2w" secondAttribute="trailing" constant="160" id="1yx-Zl-t0r"/>
-                            <constraint firstItem="P48-oU-nVO" firstAttribute="top" secondItem="HPi-3H-u2w" secondAttribute="bottom" constant="18" id="3sH-qT-ZfZ"/>
-                            <constraint firstItem="WMC-0S-jO0" firstAttribute="leading" secondItem="WJD-uF-LwJ" secondAttribute="leadingMargin" constant="139" id="4sk-KG-vE0"/>
-                            <constraint firstItem="P48-oU-nVO" firstAttribute="leading" secondItem="WJD-uF-LwJ" secondAttribute="leadingMargin" constant="242" id="5Ce-5P-6Ck"/>
-                            <constraint firstItem="P48-oU-nVO" firstAttribute="top" secondItem="HPi-3H-u2w" secondAttribute="bottom" constant="18" id="8jk-vt-6Dv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="z0e-2E-Rfa" secondAttribute="trailing" constant="139" id="IAx-RJ-A1U"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="WMC-0S-jO0" secondAttribute="trailing" constant="139" id="MB4-dl-IYz"/>
-                            <constraint firstItem="P48-oU-nVO" firstAttribute="leading" secondItem="WJD-uF-LwJ" secondAttribute="leadingMargin" constant="216" id="MFb-ID-U8E"/>
-                            <constraint firstItem="JMX-aO-yaf" firstAttribute="top" secondItem="P48-oU-nVO" secondAttribute="bottom" constant="290" id="P8n-rZ-noS"/>
-                            <constraint firstItem="z0e-2E-Rfa" firstAttribute="leading" secondItem="WJD-uF-LwJ" secondAttribute="leadingMargin" constant="139" id="Wjd-dj-uYV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="P48-oU-nVO" secondAttribute="trailing" constant="216" id="XOf-nr-Skq"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="P48-oU-nVO" secondAttribute="trailing" constant="242" id="ZaG-Eq-C9y"/>
-                            <constraint firstItem="HPi-3H-u2w" firstAttribute="leading" secondItem="WJD-uF-LwJ" secondAttribute="leadingMargin" constant="160" id="qii-yk-TDJ"/>
-                            <constraint firstItem="HPi-3H-u2w" firstAttribute="top" secondItem="vQl-Qg-Eo3" secondAttribute="bottom" constant="8" id="tZc-lt-kNW"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="1yb-5D-2Sd"/>
-                                <exclude reference="3sH-qT-ZfZ"/>
-                                <exclude reference="5Ce-5P-6Ck"/>
-                                <exclude reference="ZaG-Eq-C9y"/>
-                                <exclude reference="P8n-rZ-noS"/>
-                            </mask>
-                        </variation>
-                    </view>
+                        <connections>
+                            <outlet property="dataSource" destination="BYZ-38-t0r" id="JBL-4b-zxL"/>
+                            <outlet property="delegate" destination="BYZ-38-t0r" id="bS8-tD-Dcg"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="tableView" destination="nEf-m1-5Yu" id="iTL-cy-sBb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
-    <resources>
-        <image name="web_hi_res_512.png" width="512" height="512"/>
-    </resources>
 </document>

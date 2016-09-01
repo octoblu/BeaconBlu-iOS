@@ -10,12 +10,18 @@ import UIKit
 import CoreLocation
 import MeshbluBeaconKit
 import SwiftyJSON
+import SwiftyOAuth
 
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate, MeshbluBeaconKitDelegate {
   var window: UIWindow?
   var meshbluBeaconKit : MeshbluBeaconKit!
+  let provider = Provider(
+    clientID:     "ee245a67-6dec-431f-a03d-718d73ea076d",
+    authorizeURL: "https://oauth.octoblu.com/authorize",
+    redirectURL:  "beaconblu://callback"
+  )
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
@@ -26,10 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MeshbluBeaconKitDelegate 
     meshbluConfig["uuid"] = settings.stringForKey("uuid")
     meshbluConfig["token"] = settings.stringForKey("token")
     
-    println("meshbluConfig: \(meshbluConfig)")
-    
-    self.meshbluBeaconKit = MeshbluBeaconKit(meshbluConfig: meshbluConfig)
-    meshbluBeaconKit.start("CF593B78-DA79-4077-ABA3-940085DF45CA", beaconIdentifier: "iBeaconModules.us", delegate: self)
+    self.meshbluBeaconKit = MeshbluBeaconKit(meshbluConfig: meshbluConfig, delegate: self)
+    meshbluBeaconKit.start(["CF593B78-DA79-4077-ABA3-940085DF45CA":"iBeaconModules.us"])
 
     return true
   }
@@ -55,12 +59,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MeshbluBeaconKitDelegate 
   func applicationWillTerminate(application: UIApplication) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
-}
-
-extension AppDelegate: MeshbluBeaconKitDelegate {
+  
+  func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+    if #available(iOS 9.0, *) {
+      provider.handleURL(url, options: options)
+    } else {
+      // Fallback on earlier versions
+    }
+    
+    return true
+  }
   
   func getMainControler() -> MainViewController {
     let viewController:MainViewController = window!.rootViewController as! MainViewController
+    viewController.provider = provider
     return viewController
   }
   
@@ -94,7 +106,7 @@ extension AppDelegate: MeshbluBeaconKitDelegate {
     }
   }
   
-  func meshbluBeaconIsUnregistered() {
+  func meshbluBeaconIsNotRegistered() {
     self.meshbluBeaconKit.register()
   }
   
@@ -112,7 +124,7 @@ extension AppDelegate: MeshbluBeaconKitDelegate {
   }
 
   func beaconExitedRegion() {
-    self.updateMainViewWithMessage("Beacon Exitied Region")
+    self.updateMainViewWithMessage("Beacon Exited Region")
   }
   
 }

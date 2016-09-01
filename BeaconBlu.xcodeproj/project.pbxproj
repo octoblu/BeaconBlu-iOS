@@ -7,26 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06F2FD821B8B7BAD005D636F /* web_hi_res_512.png in Resources */ = {isa = PBXBuildFile; fileRef = 06F2FD811B8B7BAD005D636F /* web_hi_res_512.png */; };
+		AE633CD7FBF17F167A8B6999 /* Pods_BeaconBlu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B26004BAAAE9AB14768249 /* Pods_BeaconBlu.framework */; };
 		D04596721A3B600E0027F19C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04596711A3B600E0027F19C /* CoreLocation.framework */; };
 		D0A8E6B21A2E7B0700BE8EF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A8E6B11A2E7B0700BE8EF6 /* AppDelegate.swift */; };
 		D0A8E6B71A2E7B0700BE8EF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A8E6B51A2E7B0700BE8EF6 /* Main.storyboard */; };
 		D0A8E6B91A2E7B0700BE8EF6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A8E6B81A2E7B0700BE8EF6 /* Images.xcassets */; };
 		D0A8E6BC1A2E7B0700BE8EF6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A8E6BA1A2E7B0700BE8EF6 /* LaunchScreen.xib */; };
 		D0A8E6D41A2E7CE100BE8EF6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A8E6D31A2E7CE100BE8EF6 /* MainViewController.swift */; };
-		D304592AF6B4153F537F27F6 /* Pods_BeaconBlu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBAAC6BD223E4D4B8FA0E34 /* Pods_BeaconBlu.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		06F2FD811B8B7BAD005D636F /* web_hi_res_512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = web_hi_res_512.png; path = "../../../../Dropbox/Octoblu/BeaconBlu-Android/BeaconBlu-Android-Icons/web_hi_res_512.png"; sourceTree = "<group>"; };
-		0FBAAC6BD223E4D4B8FA0E34 /* Pods_BeaconBlu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaconBlu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		17A8A6E0DF472B8EB9FD92D1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		239EEC65C4232B2A2CF1331E /* Pods_BeaconBluTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaconBluTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D378933C75F0BE3E1B364F7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		500BFFA1300ED8599C21E2B3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		52D5D4E86706C9E6AFD42E5B /* Pods-BeaconBlu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconBlu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconBlu/Pods-BeaconBlu.debug.xcconfig"; sourceTree = "<group>"; };
-		7A5C06645D4C845AFC7B8184 /* Pods-BeaconBluTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconBluTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconBluTests/Pods-BeaconBluTests.release.xcconfig"; sourceTree = "<group>"; };
-		A1DEA44EAEE7B6A1DA084D86 /* Pods-BeaconBluTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconBluTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconBluTests/Pods-BeaconBluTests.debug.xcconfig"; sourceTree = "<group>"; };
+		52B26004BAAAE9AB14768249 /* Pods_BeaconBlu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaconBlu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6117ACB867850A720CF4C5D1 /* Pods-BeaconBlu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconBlu.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconBlu/Pods-BeaconBlu.release.xcconfig"; sourceTree = "<group>"; };
+		9CA9474CFD3302EF442B40AF /* Pods-BeaconBlu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconBlu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconBlu/Pods-BeaconBlu.debug.xcconfig"; sourceTree = "<group>"; };
 		D04596711A3B600E0027F19C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D0A8E6AC1A2E7B0700BE8EF6 /* BeaconBlu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeaconBlu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A8E6B01A2E7B0700BE8EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,7 +31,6 @@
 		D0A8E6C61A2E7B0700BE8EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0A8E6C71A2E7B0700BE8EF6 /* BeaconBluTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconBluTests.swift; sourceTree = "<group>"; };
 		D0A8E6D31A2E7CE100BE8EF6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		F5033BD2A099F049FC36B5A0 /* Pods-BeaconBlu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconBlu.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconBlu/Pods-BeaconBlu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,34 +39,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				D04596721A3B600E0027F19C /* CoreLocation.framework in Frameworks */,
-				D304592AF6B4153F537F27F6 /* Pods_BeaconBlu.framework in Frameworks */,
+				AE633CD7FBF17F167A8B6999 /* Pods_BeaconBlu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		66E7C95BBBAB6271AD559921 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				500BFFA1300ED8599C21E2B3 /* Pods.debug.xcconfig */,
-				17A8A6E0DF472B8EB9FD92D1 /* Pods.release.xcconfig */,
-				A1DEA44EAEE7B6A1DA084D86 /* Pods-BeaconBluTests.debug.xcconfig */,
-				7A5C06645D4C845AFC7B8184 /* Pods-BeaconBluTests.release.xcconfig */,
-				52D5D4E86706C9E6AFD42E5B /* Pods-BeaconBlu.debug.xcconfig */,
-				F5033BD2A099F049FC36B5A0 /* Pods-BeaconBlu.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		D0A8E6A31A2E7B0700BE8EF6 = {
 			isa = PBXGroup;
 			children = (
 				D0A8E6AE1A2E7B0700BE8EF6 /* BeaconBlu */,
 				D0A8E6C41A2E7B0700BE8EF6 /* BeaconBluTests */,
 				D0A8E6AD1A2E7B0700BE8EF6 /* Products */,
-				66E7C95BBBAB6271AD559921 /* Pods */,
 				D5D584322DDFD65B05F38603 /* Frameworks */,
+				D209597F59EF836A8104D829 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,7 +81,6 @@
 		D0A8E6AF1A2E7B0700BE8EF6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				06F2FD811B8B7BAD005D636F /* web_hi_res_512.png */,
 				D0A8E6B01A2E7B0700BE8EF6 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -124,13 +103,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D209597F59EF836A8104D829 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9CA9474CFD3302EF442B40AF /* Pods-BeaconBlu.debug.xcconfig */,
+				6117ACB867850A720CF4C5D1 /* Pods-BeaconBlu.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D5D584322DDFD65B05F38603 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				D04596711A3B600E0027F19C /* CoreLocation.framework */,
 				2D378933C75F0BE3E1B364F7 /* Pods.framework */,
-				0FBAAC6BD223E4D4B8FA0E34 /* Pods_BeaconBlu.framework */,
-				239EEC65C4232B2A2CF1331E /* Pods_BeaconBluTests.framework */,
+				52B26004BAAAE9AB14768249 /* Pods_BeaconBlu.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -142,12 +129,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0A8E6CB1A2E7B0700BE8EF6 /* Build configuration list for PBXNativeTarget "BeaconBlu" */;
 			buildPhases = (
-				E69EC3BE022C23161BF46260 /* Check Pods Manifest.lock */,
+				73590C89C185D074D60EF6DB /* [CP] Check Pods Manifest.lock */,
 				D0A8E6A81A2E7B0700BE8EF6 /* Sources */,
 				D0A8E6A91A2E7B0700BE8EF6 /* Frameworks */,
 				D0A8E6AA1A2E7B0700BE8EF6 /* Resources */,
-				1133BD5D25041F3B7C50FA6F /* Copy Pods Resources */,
-				D3C8B5B7F13983CFF05A5D8C /* Embed Pods Frameworks */,
+				15F13C637ECC4D382580CE50 /* [CP] Embed Pods Frameworks */,
+				C9CDE9B7C21940D2BB32AF7F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,7 +151,7 @@
 		D0A8E6A41A2E7B0700BE8EF6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Octoblu, Inc";
 				TargetAttributes = {
 					D0A8E6AB1A2E7B0700BE8EF6 = {
@@ -204,36 +191,20 @@
 				D0A8E6B71A2E7B0700BE8EF6 /* Main.storyboard in Resources */,
 				D0A8E6BC1A2E7B0700BE8EF6 /* LaunchScreen.xib in Resources */,
 				D0A8E6B91A2E7B0700BE8EF6 /* Images.xcassets in Resources */,
-				06F2FD821B8B7BAD005D636F /* web_hi_res_512.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1133BD5D25041F3B7C50FA6F /* Copy Pods Resources */ = {
+		15F13C637ECC4D382580CE50 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeaconBlu/Pods-BeaconBlu-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D3C8B5B7F13983CFF05A5D8C /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,19 +212,34 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeaconBlu/Pods-BeaconBlu-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E69EC3BE022C23161BF46260 /* Check Pods Manifest.lock */ = {
+		73590C89C185D074D60EF6DB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C9CDE9B7C21940D2BB32AF7F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeaconBlu/Pods-BeaconBlu-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -310,6 +296,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -324,7 +311,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -361,7 +348,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -371,7 +358,7 @@
 		};
 		D0A8E6CC1A2E7B0700BE8EF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52D5D4E86706C9E6AFD42E5B /* Pods-BeaconBlu.debug.xcconfig */;
+			baseConfigurationReference = 9CA9474CFD3302EF442B40AF /* Pods-BeaconBlu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = GreenAndBlu;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -380,6 +367,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PODS_ROOT = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.octoblu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -388,7 +376,7 @@
 		};
 		D0A8E6CD1A2E7B0700BE8EF6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F5033BD2A099F049FC36B5A0 /* Pods-BeaconBlu.release.xcconfig */;
+			baseConfigurationReference = 6117ACB867850A720CF4C5D1 /* Pods-BeaconBlu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = GreenAndBlu;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -397,6 +385,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PODS_ROOT = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.octoblu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
