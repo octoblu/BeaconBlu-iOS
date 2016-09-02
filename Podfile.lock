@@ -5,7 +5,7 @@ PODS:
     - Dollar (~> 5.2)
     - MeshbluHttp (~> 1.1)
     - Result (~> 2.1)
-  - MeshbluHttp (1.1.0):
+  - MeshbluHttp (1.2.0):
     - Alamofire (~> 3.4)
     - Result (~> 2.1)
     - SwiftyJSON (~> 2.3)
@@ -15,18 +15,18 @@ PODS:
 
 DEPENDENCIES:
   - MeshbluBeaconKit (~> 2.8)
-  - MeshbluHttp (~> 1.1)
+  - MeshbluHttp (~> 1.2)
   - SwiftyOAuth (~> 0.3)
 
 SPEC CHECKSUMS:
   Alamofire: 6aa33201d20d069e1598891cf928883ff1888c7a
   Dollar: 2748eaeec93d7c6df922478becdf3f782e51551c
   MeshbluBeaconKit: 16fab801a5a47c45c820aa88e8697423af9890cc
-  MeshbluHttp: 26e1ad7fa10d7cfc04574d1c9ed26d36bc6e6ce4
+  MeshbluHttp: 7af92a02c3e7c92c14037805ae5cd618e4745970
   Result: 18e1a7597fbcca5923c565b40a25a98afafdee02
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyOAuth: 6fa3e4fe2154a046ef6e56f02a1ab6c6d240d606
 
-PODFILE CHECKSUM: da3df203015c508e96300a4dcaf92938927731e0
+PODFILE CHECKSUM: bee0b56966ce4bcfa2d8485fd80756c15f09d448
 
 COCOAPODS: 1.0.1

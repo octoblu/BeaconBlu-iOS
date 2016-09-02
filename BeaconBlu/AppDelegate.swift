@@ -69,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MeshbluBeaconKitDelegate 
       provider.authorize { (result: Result<Token, Error>) -> Void in
         switch result {
         case .Success(let token):
+          settings.setToken(token, forProvider: self.provider)
           self.startBeacon()
         case .Failure(let error):
           print(error)
@@ -82,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MeshbluBeaconKitDelegate 
     let bearerToken = settings.getTokenForProvider(provider)
 
     if bearerToken != nil {
-      self.meshbluHttp.setCredentials(bearerToken!.accessToken)
+      self.meshbluHttp.setCredentials(bearerToken!.accessToken.stringByRemovingPercentEncoding!)
       self.meshbluBeaconKit.start(["CF593B78-DA79-4077-ABA3-940085DF45CA":"iBeaconModules.us"])
     }
   }
@@ -95,7 +96,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MeshbluBeaconKitDelegate 
   
   func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
     if #available(iOS 9.0, *) {
-      print(url.fragment)
       provider.handleURL(url, options: options)
     } else {
       // Fallback on earlier versions
@@ -111,7 +111,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MeshbluBeaconKitDelegate 
   
   func updateMainViewWithMessage(message: String){
     let viewController = getMainControler()
-    NSLog(message)
     viewController.message = message
     viewController.tableView!.reloadData()
   }
@@ -146,7 +145,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MeshbluBeaconKitDelegate 
         print(error)
       case .Success(let whoami):
         let uuid = whoami["uuid"].stringValue
-        let data = ["owner":uuid]
+        let data = ["owner":uuid, "name":"BeaconBlu"]
         self.meshbluBeaconKit.register(data)
       }
     }
