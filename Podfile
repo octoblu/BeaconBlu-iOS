@@ -5,6 +5,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'BeaconBlu' do
-  pod 'MeshbluBeaconKit', '~> 2.6'
+  pod 'MeshbluHttp', '~> 1.1'
+  pod 'MeshbluBeaconKit', '~> 2.8'
   pod 'SwiftyOAuth', '~> 0.3'
 end

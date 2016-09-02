@@ -17,13 +17,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
   let LOGIN_URL = "https://login.octoblu.com"
   var provider: Provider!
   
-  var emailTextField : UITextField?
+//  var emailTextField : UITextField?
   
   @IBOutlet var tableView: UITableView!
   
-  @IBOutlet var webView: UIWebView!
+//  @IBOutlet var webView: UIWebView!
   
-  @IBOutlet var profileView: UIView!
+//  @IBOutlet var profileView: UIView!
   
   func logoutButton(){
     let settings = NSUserDefaults.standardUserDefaults()
@@ -36,50 +36,50 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     self.userEmail = nil
   }
   
-  func doneWithProfile(){
-    let settings = NSUserDefaults.standardUserDefaults()
-    let email = self.emailTextField!.text
-    settings.setObject(email, forKey: "email")
-    self.userEmail = email
-    self.profileView.removeFromSuperview()
-    self.tableView.reloadData()
-  }
+//  func doneWithProfile(){
+//    let settings = NSUserDefaults.standardUserDefaults()
+//    let email = self.emailTextField!.text
+//    settings.setObject(email, forKey: "email")
+//    self.userEmail = email
+////    self.profileView.removeFromSuperview()
+//    self.tableView.reloadData()
+//  }
   
-  func startProfileView(){
-    NSLog("Starting Profile View")
-    
-    let profileViewFrame = CGRect(x: 0, y: 16, width: self.view.bounds.width, height: self.view.bounds.height)
-    
-    self.profileView = UIView(frame: profileViewFrame)
-    self.profileView.backgroundColor = UIColor.darkGrayColor()
-    
-    // Add Title
-    let titleFieldFrame = CGRect(x: 15, y: 15, width: self.view.bounds.width, height: 45)
-    let titleField = UITextView(frame: titleFieldFrame)
-    titleField.text = "Edit Profile Settings"
-    titleField.textColor = UIColor.whiteColor()
-    titleField.backgroundColor = UIColor.clearColor()
-    titleField.font = UIFont(name: "Helvetica", size: 22.0)
-    self.profileView.addSubview(titleField)
-    
-    // Add Text Field
-    let textFieldFrame = CGRect(x: 15, y: 65, width: self.view.bounds.width - 30, height: 30)
-    emailTextField = UITextField(frame: textFieldFrame)
-    emailTextField!.backgroundColor = UIColor.whiteColor()
-    emailTextField!.text = self.userEmail
-    emailTextField!.placeholder = "Email Address"
-    emailTextField!.keyboardType = UIKeyboardType.EmailAddress
-    self.profileView.addSubview(self.emailTextField!)
-    
-    // Add Button
-    let buttonFrame = CGRect(x: self.view.bounds.width - 100, y: 85, width: 100, height: 50)
-    let doneWithProfileButton = UIButton(frame: buttonFrame)
-    doneWithProfileButton.setTitle("Done", forState: .Normal)
-    doneWithProfileButton.addTarget(self, action: Selector("doneWithProfile"), forControlEvents: .TouchUpInside)
-    self.profileView.addSubview(doneWithProfileButton)
-    
-    self.view.addSubview(self.profileView)
-  }
+//  func startProfileView(){
+//    NSLog("Starting Profile View")
+//    
+//    let profileViewFrame = CGRect(x: 0, y: 16, width: self.view.bounds.width, height: self.view.bounds.height)
+//    
+//    self.profileView = UIView(frame: profileViewFrame)
+//    self.profileView.backgroundColor = UIColor.darkGrayColor()
+//    
+//    // Add Title
+//    let titleFieldFrame = CGRect(x: 15, y: 15, width: self.view.bounds.width, height: 45)
+//    let titleField = UITextView(frame: titleFieldFrame)
+//    titleField.text = "Edit Profile Settings"
+//    titleField.textColor = UIColor.whiteColor()
+//    titleField.backgroundColor = UIColor.clearColor()
+//    titleField.font = UIFont(name: "Helvetica", size: 22.0)
+//    self.profileView.addSubview(titleField)
+//    
+//    // Add Text Field
+//    let textFieldFrame = CGRect(x: 15, y: 65, width: self.view.bounds.width - 30, height: 30)
+//    emailTextField = UITextField(frame: textFieldFrame)
+//    emailTextField!.backgroundColor = UIColor.whiteColor()
+//    emailTextField!.text = self.userEmail
+//    emailTextField!.placeholder = "Email Address"
+//    emailTextField!.keyboardType = UIKeyboardType.EmailAddress
+//    self.profileView.addSubview(self.emailTextField!)
+//    
+//    // Add Button
+//    let buttonFrame = CGRect(x: self.view.bounds.width - 100, y: 85, width: 100, height: 50)
+//    let doneWithProfileButton = UIButton(frame: buttonFrame)
+//    doneWithProfileButton.setTitle("Done", forState: .Normal)
+//    doneWithProfileButton.addTarget(self, action: #selector(MainViewController.doneWithProfile) , forControlEvents: .TouchUpInside)
+//    self.profileView.addSubview(doneWithProfileButton)
+//    
+//    self.view.addSubview(self.profileView)
+//  }
   
   func initalize() {
     let settings = NSUserDefaults.standardUserDefaults()
@@ -89,20 +89,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     let deviceToken = settings.stringForKey("deviceToken")
     let email = settings.stringForKey("email")
     
-    if uuid == nil || token == nil {
-      provider.authorize { (result: Result<Token, Error>) -> Void in
-        switch result {
-        case .Success(let token): print(token)
-        case .Failure(let error): print(error)
-        }
-      }
-      return
-    }
+//    if uuid == nil || token == nil {
+//      return
+//    }
     
-    if email == nil {
-      self.startProfileView()
-      return
-    }
+//    if email == nil {
+//      self.startProfileView()
+//      return
+//    }
     
     self.userUuid = uuid
     self.userEmail = email
@@ -122,11 +116,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     logoutButton.addTarget(self, action: Selector("logoutButton"), forControlEvents: .TouchUpInside)
     self.tableView.addSubview(logoutButton)
     
-    let profileButtonFrame = CGRect(x: 5, y: bounds.height - 55, width: 100, height: 50)
-    let profileButton = UIButton(frame: profileButtonFrame)
-    profileButton.setTitle("Profile", forState: .Normal)
-    profileButton.addTarget(self, action: Selector("startProfileView"), forControlEvents: .TouchUpInside)
-    self.tableView.addSubview(profileButton)
+//    let profileButtonFrame = CGRect(x: 5, y: bounds.height - 55, width: 100, height: 50)
+//    let profileButton = UIButton(frame: profileButtonFrame)
+//    profileButton.setTitle("Profile", forState: .Normal)
+//    profileButton.addTarget(self, action: Selector("startProfileView"), forControlEvents: .TouchUpInside)
+//    self.tableView.addSubview(profileButton)
     
     self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     
@@ -176,58 +170,58 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
   }
   
-  func loadUrl(){
-    let url = NSURL(string: LOGIN_URL)
-    
-    let request = NSURLRequest(URL: url!)
-    
-    webView.loadRequest(request)
-  }
+//  func loadUrl(){
+//    let url = NSURL(string: LOGIN_URL)
+//    
+//    let request = NSURLRequest(URL: url!)
+//    
+//    webView.loadRequest(request)
+//  }
   
-  func setUuidAndToken(uuid : String, token : String) {
-    let settings = NSUserDefaults.standardUserDefaults()
-    self.userUuid = uuid
-    settings.setObject(uuid, forKey: "userUuid")
-    settings.setObject(token, forKey: "userToken")
-    NSLog("UUID : \(uuid) TOKEN : \(token)")
-    self.webView.removeFromSuperview()
-    self.initalize()
-  }
+//  func setUuidAndToken(uuid : String, token : String) {
+//    let settings = NSUserDefaults.standardUserDefaults()
+//    self.userUuid = uuid
+//    settings.setObject(uuid, forKey: "userUuid")
+//    settings.setObject(token, forKey: "userToken")
+//    NSLog("UUID : \(uuid) TOKEN : \(token)")
+//    self.webView.removeFromSuperview()
+//    self.initalize()
+//  }
   
-  func webViewDidFinishLoad(webView: UIWebView) {
-    let currentUrl : String? = webView.request?.URL!.absoluteString;
-    if currentUrl == nil || currentUrl! == "" {
-      return
-    }
-    if currentUrl!.rangeOfString("?") == nil {
-      return
-    }
-    
-    let queryItems  = NSURLComponents(string: currentUrl!)!.queryItems!
-      as Array<NSURLQueryItem>
-    
-    let keys = queryItems.map({(queryItem) -> String in queryItem.name})
-    if(!keys.contains("uuid") || !keys.contains("token")) {
-      return
-    }
-    
-    let uuid : String? = queryItems[0].value
-    let token : String? = queryItems[1].value
-    
-    if uuid == "undefined" || token == "undefined" {
-      let alert = UIAlertView()
-      alert.title = "Error"
-      alert.message = "Unable to Login"
-      alert.addButtonWithTitle("Retry")
-      alert.show()
-      self.loadUrl()
-      return;
-    }
-    
-    if uuid != nil && token != nil {
-      webView.stopLoading()
-      setUuidAndToken(uuid!, token: token!)
-    }
-    
-  }
+//  func webViewDidFinishLoad(webView: UIWebView) {
+//    let currentUrl : String? = webView.request?.URL!.absoluteString;
+//    if currentUrl == nil || currentUrl! == "" {
+//      return
+//    }
+//    if currentUrl!.rangeOfString("?") == nil {
+//      return
+//    }
+//    
+//    let queryItems  = NSURLComponents(string: currentUrl!)!.queryItems!
+//      as Array<NSURLQueryItem>
+//    
+//    let keys = queryItems.map({(queryItem) -> String in queryItem.name})
+//    if(!keys.contains("uuid") || !keys.contains("token")) {
+//      return
+//    }
+//    
+//    let uuid : String? = queryItems[0].value
+//    let token : String? = queryItems[1].value
+//    
+//    if uuid == "undefined" || token == "undefined" {
+//      let alert = UIAlertView()
+//      alert.title = "Error"
+//      alert.message = "Unable to Login"
+//      alert.addButtonWithTitle("Retry")
+//      alert.show()
+//      self.loadUrl()
+//      return;
+//    }
+//    
+//    if uuid != nil && token != nil {
+//      webView.stopLoading()
+//      setUuidAndToken(uuid!, token: token!)
+//    }
+//    
+//  }
 }

@@ -1,11 +1,11 @@
 PODS:
   - Alamofire (3.4.2)
   - Dollar (5.2.0)
-  - MeshbluBeaconKit (2.6.0):
+  - MeshbluBeaconKit (2.8.0):
     - Dollar (~> 5.2)
-    - MeshbluHttp (~> 1.0)
+    - MeshbluHttp (~> 1.1)
     - Result (~> 2.1)
-  - MeshbluHttp (1.0.0):
+  - MeshbluHttp (1.1.0):
     - Alamofire (~> 3.4)
     - Result (~> 2.1)
     - SwiftyJSON (~> 2.3)
@@ -14,18 +14,19 @@ PODS:
   - SwiftyOAuth (0.4.1)
 
 DEPENDENCIES:
-  - MeshbluBeaconKit (~> 2.6)
+  - MeshbluBeaconKit (~> 2.8)
+  - MeshbluHttp (~> 1.1)
   - SwiftyOAuth (~> 0.3)
 
 SPEC CHECKSUMS:
   Alamofire: 6aa33201d20d069e1598891cf928883ff1888c7a
   Dollar: 2748eaeec93d7c6df922478becdf3f782e51551c
-  MeshbluBeaconKit: bc223be637f2153bf92d94347d5f9a639b1c02a5
-  MeshbluHttp: f8c603b45d207feec71b50301b316db218ea140a
+  MeshbluBeaconKit: 16fab801a5a47c45c820aa88e8697423af9890cc
+  MeshbluHttp: 26e1ad7fa10d7cfc04574d1c9ed26d36bc6e6ce4
   Result: 18e1a7597fbcca5923c565b40a25a98afafdee02
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyOAuth: 6fa3e4fe2154a046ef6e56f02a1ab6c6d240d606
 
-PODFILE CHECKSUM: a3bbcf91f26acf27e12c8f6472db9ef3f0798f8c
+PODFILE CHECKSUM: da3df203015c508e96300a4dcaf92938927731e0
 
 COCOAPODS: 1.0.1
